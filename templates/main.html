@@ -1,0 +1,28 @@
+<!DOCTYPE html> <head>
+   <title>Current Status</title> </head> <body>
+   <h1>Garage Control and Status</h1>
+    
+   {% for pin in pins %}
+   <p>The {{ pins[pin].name }}
+   {% if pins[pin].state == false %}
+      is currently on (<a href="/{{pin}}/off">turn off</a>)
+   {% else %}
+      is currently off (<a href="/{{pin}}/on">turn on</a>)
+   {% endif %}
+   </p>
+   {% endfor %}
+   
+   {% for mompin in mompins %}
+   <p>The {{ mompins[mompin].name }}
+   {% if mompins[mompin].state == false %}
+     (<a href="/{{mompin}}/push">push</a>)
+   {% else %}
+     (<a href="/{{mompin}}/push">push</a>)
+   {% endif %}
+   </p>
+   {% endfor %}
+
+   {% if message %}
+   <h2>{{ message }}</h2>
+   {% endif %} </body>
+</html>
